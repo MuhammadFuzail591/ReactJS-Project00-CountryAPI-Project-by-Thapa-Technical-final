@@ -20,7 +20,26 @@ export default function Country() {
     })
   },[])
 
-  console.log(searchQuery, filterCountry)
+
+  const searchCountry = (country) => {
+    if(searchQuery){
+      return country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
+    }else{
+      return country;
+    }
+    
+  }
+  const filterRegion = (country) => {
+    if(filterCountry === "all"){
+      return country;
+    }
+    else{
+      return country.region.toLowerCase().includes(filterCountry.toLowerCase())
+    }
+  }
+
+  //Logic of filtering countries
+  const filteredCountries =   countries.filter((country) => searchCountry(country) && filterRegion(country))
 
   isPending && <Loader />
   
@@ -31,10 +50,12 @@ export default function Country() {
           setSearchQuery={setSearchQuery}
           filterCountry={filterCountry}
           setFilterCountry={setFilterCountry}
+          countries={countries}
+          setCountries = {setCountries}
         />
         
         <ul className="grid grid-four-cols">
-          {countries.map((curCountry,index) => {
+          {filteredCountries.map((curCountry,index) => {
             return <CountryCard country={curCountry} key={index} />
           } )}
         </ul>
