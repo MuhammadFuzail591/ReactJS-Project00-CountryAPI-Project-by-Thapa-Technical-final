@@ -533,7 +533,7 @@
   
   .section-contact {
     margin: 9.6rem auto;
-    max-width: 80rem;
+    max-width: 80%;
   
     & hr {
       border-color: rgba(255, 255, 255, 0.6);
