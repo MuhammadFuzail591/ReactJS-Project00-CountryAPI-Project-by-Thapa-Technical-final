@@ -9,6 +9,11 @@ function Header () {
   const toggleMblMenu = () => {
     setShow(!show)
   }
+
+  const closeMblMenu = () => {
+    setShow(false)
+  }
+
   
   return (
     <header>
@@ -22,22 +27,22 @@ function Header () {
           <nav className={show? "menu-mobile" : "menu-web"}>
             <ul>
               <li>
-                <NavLink className='link' to='/'>
+                <NavLink className='link' to='/' onClick={closeMblMenu}>
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink className='link' to='/about'>
+                <NavLink className='link' to='/about' onClick={closeMblMenu}>
                   About
                 </NavLink>
               </li>
               <li>
-                <NavLink className='link' to='/country'>
+                <NavLink className='link' to='/country' onClick={closeMblMenu}>
                   Country
                 </NavLink>
               </li>
               <li>
-                <NavLink className='link' to='/contact'>
+                <NavLink className='link' to='/contact' onClick={closeMblMenu}>
                   Contact
                 </NavLink>
               </li>
