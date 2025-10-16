@@ -1,15 +1,17 @@
-export default function Contact () {
-  const handleFormSubmit = formData => {
-    const formInputData = Object.fromEntries(formData.entries())
+export default function Contact() {
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formInputData = Object.fromEntries(formData.entries());
 
-    console.log(formInputData)
-  }
+    console.log(formInputData);
+  };
   return (
     <section className='section-contact'>
       <h1 className='container-title'>Contact Us</h1>
 
       <div className='contact-wrapper'>
-        <form action={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <input
             type='text'
             required
@@ -37,5 +39,6 @@ export default function Contact () {
         </form>
       </div>
     </section>
-  )
+  );
+}
 }
